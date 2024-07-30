@@ -32,13 +32,13 @@ public class Exercise1 {
 
         // Print first names in userStream for users that have IDs from number stream
         // TODO: Write code here
-        StreamSources.intNumbersStream()
-            .flatMap(id -> 
+        var s = StreamSources.intNumbersStream();
+        var s1 =  s.flatMap(id -> 
                     StreamSources.userStream()
                     .filter(user -> user.getId() == id)
                 )
-            .map(user -> user.getFirstName())
-            .forEach(System.out::println);
+            .map(user -> user.getFirstName());
+        s1.forEach(System.out::println);
 
         StreamSources.userStream()
             .filter(u -> 
